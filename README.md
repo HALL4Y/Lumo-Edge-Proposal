@@ -1,2 +1,2 @@
 # Feature Branch
-Ce dépôt regroupe les développements expérimentaux parent de LUMO-Edge et autres prototypes.
+Ce dépôt regroupe les développements expérimentaux et autres prototypes.
