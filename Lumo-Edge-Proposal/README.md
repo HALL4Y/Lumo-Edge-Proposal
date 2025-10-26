@@ -1,4 +1,4 @@
-# Lumo-Edge-proposal
+# Lumo-Edge Proposal
 
 ## 🎯 Objectif
 Développer **Lumo-Edge**, un **agent local opt-in** conçu pour **Proton Pass**, capable d’analyser les formulaires web et d’améliorer l’autoremplissage **sans jamais exposer de données sensibles**.
@@ -53,7 +53,7 @@ Stockage : cache chiffré par domaine, versionné, effacement automatique.
 
 ## 🧠 Moteur de mapping
 - Analyse **sémantique** : `data-pass`, `name`, `aria-label`.  
-- Analyse **structurelle** : `<label for>` + proximité visuelle.  
+- Analyse **structurelle** : `<label for>` + proximity visuelle.  
 - Reconnaissance automatique des paires `password / confirmation`.  
 - Gestion latence + shadow DOM + iframes.
 
@@ -104,3 +104,13 @@ Stockage : cache chiffré par domaine, versionné, effacement automatique.
   "sig": "ed25519:BASE64",
   "ver": "Lumo-Edge-0.1"
 }
+```
+
+---
+
+## ✅ Prochaines actions
+1. Ajouter `manifest.json`, `bg.js`, `contentScript.js`, `popup.html`.  
+2. Committer dans la branche Feature.  
+3. Créer une *pull request* :  
+   **“feat(lumo-edge): proposition d’agent local opt-in pour Proton Pass”**.  
+4. Joindre ce README et les fichiers de spécification à la PR.
