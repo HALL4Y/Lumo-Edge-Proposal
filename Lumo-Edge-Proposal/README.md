@@ -105,12 +105,3 @@ Stockage : cache chiffré par domaine, versionné, effacement automatique.
   "ver": "Lumo-Edge-0.1"
 }
 ```
-
----
-
-## ✅ Prochaines actions
-1. Ajouter `manifest.json`, `bg.js`, `contentScript.js`, `popup.html`.  
-2. Committer dans la branche Feature.  
-3. Créer une *pull request* :  
-   **“feat(lumo-edge): proposition d’agent local opt-in pour Proton Pass”**.  
-4. Joindre ce README et les fichiers de spécification à la PR.
