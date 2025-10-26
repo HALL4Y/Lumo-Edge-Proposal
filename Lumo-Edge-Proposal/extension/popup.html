@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lumo-Edge</title>
+<style>
+  body{font-family:system-ui,Helvetica,Arial;margin:12px;width:300px}
+  button{width:100%;padding:8px;margin-top:8px}
+  pre{white-space:pre-wrap;background:#f6f6f6;padding:8px;border-radius:6px;max-height:240px;overflow:auto}
+</style>
+</head>
+<body>
+  <h3>Lumo-Edge</h3>
+  <div id="status">Prêt</div>
+  <button id="analyze">Analyser la page</button>
+  <button id="export" disabled>Exporter .lumo (PoC)</button>
+  <pre id="out"></pre>
+
+<script>
+const out = document.getElementById('out');
+document.getElementById('analyze').addEventListener('click', async () => {
+  document.getElementById('status').innerText = 'Analyse en cours…';
+  chrome.runtime.sendMessage({cmd:"analyze-current"}, (resp) => {
+    document.getElementById('status').innerText = resp?.ok ? 'Analyse lancée' : 'Erreur';
+  });
+});
+
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg?.cmd === 'lumo-schema') {
+    out.textContent = JSON.stringify(msg.payload, null, 2);
+    document.getElementById('export').disabled = false;
+  }
+});
+
+document.getElementById('export').addEventListener('click', () => {
+  // Demo: save schema to local storage (PoC). Real implementation: seal + App Group write.
+  const schema = out.textContent || "{}";
+  const filename = "schema-" + new Date().toISOString().replace(/[:.]/g,"-") + ".json";
+  const blob = new Blob([schema], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
